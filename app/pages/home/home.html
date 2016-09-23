@@ -1,0 +1,52 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>
+      Registration
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Firstname: </ion-label>
+      <ion-input [(ngModel)]="firstName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Lastname: </ion-label>
+      <ion-input [(ngModel)]="lastName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Username: </ion-label>
+      <ion-input [(ngModel)]="userName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password: </ion-label>
+      <ion-input [(ngModel)]="passWord" type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+    <ion-buttons>
+        <button (click)="add()" block>Register</button>
+        <button (click)="dismisstoLogin()" outline secondary block>Sign in to an existing Account</button>
+    </ion-buttons>
+    <ion-buttons>
+        <button (click)="refresh()">reload</button>
+        <button (click)="delete()">delete</button>
+    </ion-buttons>
+
+
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let person of registerdMem">
+          <ion-item  (click)="itemClicked()" >
+              <h3 >{{ person.firstname }} {{ person.lastname }}</h3>
+          </ion-item>
+          <ion-item-options>
+            <button danger (click)="deleteAlert($event, person)"> <ion-icon name="trash"></ion-icon> DELETE</button>
+          </ion-item-options>
+        </ion-item-sliding>
+        
+    </ion-list>
+</ion-content>
